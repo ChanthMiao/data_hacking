@@ -9,7 +9,6 @@ import numpy as np
 import collections
 import math
 import heapq
-import math
 
 class FixedHeap(list):
     def __init__(self, N):
@@ -110,7 +109,7 @@ class GTest():
             (rows, cols) = dataframe.shape
             cols_to_keep = []
             for r in range(rows):
-                cols_to_keep += dataframe.iloc[r].order(ascending=False).head(matches).index.tolist()[1:]
+                cols_to_keep += dataframe.iloc[r].sort_values(ascending=False).head(matches).index.tolist()[1:]
             drop_cols = set(dataframe.columns.tolist()).difference(set(cols_to_keep))
             dataframe = dataframe.drop(drop_cols, 1)
 
@@ -158,9 +157,9 @@ def _test():
     # Looking for correlations between sql names and status
     g_test = GTest()
     names, match_list, df = g_test.highest_gtest_scores(dataframe['name'], dataframe['status'], N=5)
-    print '\n<<< Names with highest correlation to status >>>'
+    print('\n<<< Names with highest correlation to status >>>')
     pprint.pprint(zip(names, match_list))
-    print df
+    print(df)
 
 if __name__ == "__main__":
     _test()

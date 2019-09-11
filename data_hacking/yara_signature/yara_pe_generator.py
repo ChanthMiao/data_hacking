@@ -9,7 +9,7 @@ import pefile
 import struct
 import os
 import string
-import yara_signature
+from . import yara_signature
 import hashlib
 
 class YaraPEGenerator:
@@ -580,7 +580,7 @@ class YaraPEGenerator:
         if hasattr(self.__pe.OPTIONAL_HEADER, 'DATA_DIRECTORY'):
             rva = self.__pe.OPTIONAL_HEADER.DATA_DIRECTORY[2].VirtualAddress
             size = self.__pe.OPTIONAL_HEADER.DATA_DIRECTORY[2].Size
-            offset = get_offset_from_rva(rva)
+            offset = self.__pe.get_offset_from_rva(rva)
 
     def add_file_info_strings(self):
         """ Add File information strings from the string table """

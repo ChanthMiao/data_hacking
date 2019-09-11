@@ -37,3 +37,6 @@ nosetests.xml
 
 # iPython Notebook temp dirs
 .ipynb_checkpoints
+
+# vscode project settings
+.vscode
