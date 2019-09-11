@@ -275,7 +275,7 @@ import statsmodels.api as sm
 
 corr_df.sort_index(axis=0, inplace=True) # Just sorting so exploits names are easy to find
 corr_df.sort_index(axis=1, inplace=True)
-corr_matrix = corr_df.as_matrix()
+corr_matrix = corr_df.values
 pylab.rcParams['figure.figsize'] = (8.0, 8.0)
 sm.graphics.plot_corr(corr_matrix, xnames=corr_df.index.tolist())
 plt.show()
